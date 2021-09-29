@@ -72,13 +72,13 @@
           <li th:each="index : ${#numbers.sequence(0,institutions.size()-1,2)}">
             <div class="col">
               <div class="title" th:text="${institutions.get(index).name}" />
-              <div class="title" th:text="${institutions.get(index).description}" />
+              <div class="subtitle" th:text="${institutions.get(index).description}" />
             </div>
 
 
             <div class="col" th:if="${index+1 <= institutions.size()-1 }">
               <div class="title" th:text="${institutions.get(index+1).name}" />
-              <div class="title" th:text="${institutions.get(index+1).description}" />
+              <div class="subtitle" th:text="${institutions.get(index+1).description}" />
             </div>
 
           </li>
