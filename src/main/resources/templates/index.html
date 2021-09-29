@@ -71,14 +71,14 @@
         <ul class="help--slides-items">
           <li th:each="index : ${#numbers.sequence(0,institutions.size()-1,2)}">
             <div class="col">
-              <div class="title" th:text="${institutions.get(index).name}" />
-              <div class="subtitle" th:text="${institutions.get(index).description}" />
+              <div class="title" th:text="|Fundacja ${institutions.get(index).name}|" ></div>
+              <div class="subtitle"  th:text="|Cel i misja: ${institutions.get(index).description}|" ></div>
             </div>
 
 
             <div class="col" th:if="${index+1 <= institutions.size()-1 }">
-              <div class="title" th:text="${institutions.get(index+1).name}" />
-              <div class="subtitle" th:text="${institutions.get(index+1).description}" />
+              <div class="title" th:text="|Fundacja ${institutions.get(index+1).name}|" ></div>
+              <div class="subtitle" th:text="|Cel i misja: ${institutions.get(index+1).description}|" ></div>
             </div>
 
           </li>
