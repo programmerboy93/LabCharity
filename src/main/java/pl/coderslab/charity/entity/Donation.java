@@ -1,6 +1,8 @@
 package pl.coderslab.charity.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -15,6 +17,8 @@ import java.util.List;
 @Getter
 @Setter
 @Table(name="donations")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Donation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

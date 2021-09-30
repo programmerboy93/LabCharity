@@ -1,25 +1,28 @@
 package pl.coderslab.charity.entity;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 
 @Entity
 @Getter
 @Setter
 @Table(name="categories")
+@NoArgsConstructor
 public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    public Category(String name) {
+        this.name = name;
+    }
+
     @NotEmpty
-    @Column(length = 30)
-    @Size(min=3,max=30)
     private String name;
 
 }

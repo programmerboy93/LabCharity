@@ -18,7 +18,7 @@ public class HomeController {
     private final DonationService donationService;
     private final InstitutionService institutionService;
 
-    @RequestMapping("")
+    @RequestMapping("/")
     public String homeAction(){
         return "index";
     }
