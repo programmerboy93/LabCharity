@@ -1,0 +1,5 @@
+-- TRUNCATE SCHEMA PUBLIC AND COMMIT;
+DROP TABLE IF EXISTS donations_categories;
+DROP TABLE IF EXISTS donations;
+DROP TABLE IF EXISTS categories;
+DROP TABLE IF EXISTS institutions;
