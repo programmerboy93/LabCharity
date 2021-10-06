@@ -14,7 +14,7 @@ public class DonationServiceImpl implements DonationService {
 
     @Override
     public int numberOfDonations() {
-        return donationRepository.numberOfDonations().orElse(0);
+        return donationRepository.numberOfDonations();
     }
 
     @Override

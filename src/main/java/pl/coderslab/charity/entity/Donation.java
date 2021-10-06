@@ -1,13 +1,11 @@
 package pl.coderslab.charity.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -27,25 +25,31 @@ public class Donation {
     @NotNull
     private Integer quantity;
 
-    @OneToMany
+    @ManyToMany
     private List<Category> categories;
 
-    @OneToMany
-    private List<Institution> institutions;
+    @ManyToOne
+    @JoinColumn(name="institution_id")
+    private Institution institution;
 
     private String street;
 
-    @NotEmpty
+    @NotBlank
     private String city;
 
-    @NotEmpty
+    @NotBlank
+    @Column(length = 6)
+    @Length(min=5,max=6)
     private String zipCode;
 
+    @NotBlank
+    private String phoneNumber;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @NotEmpty
+    @NotNull
     private LocalDate pickUpDate;
 
-    @NotEmpty
+    @NotNull
     private LocalTime pickUpTime;
 
     private String pickUpComment;
