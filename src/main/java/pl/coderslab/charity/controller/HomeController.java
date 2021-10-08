@@ -5,11 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import pl.coderslab.charity.entity.Institution;
-import pl.coderslab.charity.service.DonationService;
-import pl.coderslab.charity.service.InstitutionService;
+import pl.coderslab.charity.service.donation.DonationService;
+import pl.coderslab.charity.service.institution.InstitutionService;
 
 import java.util.List;
-
 
 @Controller
 @AllArgsConstructor

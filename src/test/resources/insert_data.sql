@@ -29,3 +29,6 @@ insert into donations_categories(donation_id, categories_id) values (3,5);
 insert into donations_categories(donation_id, categories_id) values (4,1);
 insert into donations_categories(donation_id, categories_id) values (4,3);
 insert into donations_categories(donation_id, categories_id) values (4,5);
+
+insert into roles(id,name) values (1,'ROLE_USER');
+insert into roles(id,name) values (2,'ROLE_ADMIN');

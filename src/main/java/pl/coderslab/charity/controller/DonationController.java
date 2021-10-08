@@ -37,7 +37,6 @@ public class DonationController {
 
     @PostMapping("/add")
     public String add(@Valid Donation donation, BindingResult result) {
-
         if (result.hasErrors()) {
             return "form";
         }

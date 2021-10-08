@@ -1,4 +1,4 @@
-package pl.coderslab.charity.service;
+package pl.coderslab.charity.service.category;
 
 import org.springframework.stereotype.Service;
 
