@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import pl.coderslab.charity.dto.UserDto;
 import pl.coderslab.charity.entity.User;
 import pl.coderslab.charity.repository.UserRepository;
@@ -43,6 +44,13 @@ public class UserServiceImpl implements UserService{
 //        if(!userDto.getPassword2().equals(userDto.getPassword())){
 //            result.rejectValue("password", "password", "Popraw hasło");
 //        }
+        return result.hasErrors();
+    }
+
+    @Override
+    public boolean validNewUser(UserDto userDto,BindingResult result) {
+        result.addError(new FieldError("userDto","email", "Email jest w bazie danych"));
+
         return result.hasErrors();
     }
 }

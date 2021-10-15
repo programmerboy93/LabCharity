@@ -9,4 +9,6 @@ public interface UserService {
     void save(UserDto userDto);
 
     boolean validUser(UserDto userDto, BindingResult result);
+
+    boolean validNewUser(UserDto userDto,BindingResult result);
 }
