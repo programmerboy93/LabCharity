@@ -1,7 +1,6 @@
 package pl.coderslab.charity.security;
 
 
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -10,11 +9,15 @@ import pl.coderslab.charity.entity.User;
 
 import java.util.Collection;
 import java.util.Collections;
-@AllArgsConstructor
+
 public class CustomUserDetails implements UserDetails {
 
-    @Autowired
+
     private final User user;
+    @Autowired
+    public CustomUserDetails(User user) {
+        this.user = user;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

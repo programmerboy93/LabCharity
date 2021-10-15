@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -21,7 +22,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private UserDetailsService userDetailsService;
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
@@ -37,19 +38,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) {
         auth.authenticationProvider(authenticationProvider());
     }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/login","/register","/","/donations","/","/index").permitAll()
-                .anyRequest().hasAnyAuthority()
+                .antMatchers("/login", "/register", "/").permitAll()
+                .antMatchers("/**").authenticated()
                 .and()
                 .formLogin()
+                .usernameParameter("email")
                 .loginPage("/login")
-                /*.defaultSuccessUrl("/costam")*/;
+                .defaultSuccessUrl("/dashboard");
+        http
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout","GET")).deleteCookies("JSESSIONID").logoutSuccessUrl("/");
+
     }
 
     @Override
-    public void configure(WebSecurity web){
-        web.ignoring().antMatchers("/css/**", "/js/**", "/images/**" );
+    public void configure(WebSecurity web) {
+        web.ignoring().antMatchers("/css/**", "/js/**", "/images/**");
     }
 }
